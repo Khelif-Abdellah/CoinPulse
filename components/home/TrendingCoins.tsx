@@ -4,6 +4,8 @@ import { TrendingDown, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import DataTable from "../DataTable";
+import { format } from "path";
+import { formatPercentage } from "@/lib/utils";
 
 const TrendingCoins = async () => {
   const trendingCoins = await fetcher<{ coins: TrendingCoin[] }>(
@@ -50,7 +52,7 @@ const TrendingCoins = async () => {
             ) : (
               <TrendingDown width={16} height={16} />
             )}
-            {Math.abs(item.data.price_change_percentage_24h.usd).toFixed(2)}%
+            {formatPercentage(item.data.price_change_percentage_24h.usd)}
           </div>
         );
       },

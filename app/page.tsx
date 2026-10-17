@@ -1,4 +1,10 @@
+import Categories from "@/components/home/Categories";
 import CoinOverview from "@/components/home/CoinOverview";
+import {
+  CategoriesFallback,
+  CoinOverviewFallback,
+  TrendingCoinsFallback,
+} from "@/components/home/Fallback";
 import TrendingCoins from "@/components/home/TrendingCoins";
 import { Suspense } from "react";
 
@@ -6,17 +12,19 @@ const page = async () => {
   return (
     <main className="main-container">
       <section className="home-grid">
-        <Suspense fallback={<h1>Loading Overview...</h1>}>
+        <Suspense fallback={<CoinOverviewFallback />}>
           <CoinOverview />
         </Suspense>
 
-        <Suspense fallback={<h1>Loading Trending...</h1>}>
+        <Suspense fallback={<TrendingCoinsFallback />}>
           <TrendingCoins />
         </Suspense>
       </section>
 
       <section className="w-full mt-7 space-y-4">
-        <p>Categories</p>
+        <Suspense fallback={<CategoriesFallback />}>
+          <Categories />
+        </Suspense>
       </section>
     </main>
   );
