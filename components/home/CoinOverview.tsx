@@ -6,9 +6,7 @@ import CandlestickChart from "../CandlestickChart";
 const CoinOverview = async () => {
   try {
     const [coin, coinOHLCData] = await Promise.all([
-      fetcher<CoinDetailsData>("/coins/bitcoin", {
-        dex_pair_format: "symbol",
-      }),
+      fetcher<CoinDetailsData>("/coins/bitcoin"),
       fetcher<OHLCData[]>("/coins/bitcoin/ohlc", {
         vs_currency: "usd",
         days: 1,
@@ -38,7 +36,10 @@ const CoinOverview = async () => {
               </p>
 
               <h1>
-                ${coin.market_data.current_price.usd.toLocaleString("en-US")}
+                {new Intl.NumberFormat("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                }).format(coin.market_data.current_price.usd)}
               </h1>
             </div>
           </div>
@@ -47,6 +48,7 @@ const CoinOverview = async () => {
     );
   } catch (error) {
     console.error("Error fetching coin overview:", error);
+
     return <CoinOverviewFallback />;
   }
 };
