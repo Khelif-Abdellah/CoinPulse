@@ -4,7 +4,6 @@ import { TrendingDown, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import DataTable from "../DataTable";
-import { format } from "path";
 import { formatPercentage } from "@/lib/utils";
 
 const TrendingCoins = async () => {

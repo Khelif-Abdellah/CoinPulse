@@ -38,28 +38,29 @@ const CoinsContent = async ({ searchParams }: CoinsPageProps) => {
       header: "Rank",
       cellClassName: "rank-cell",
       cell: (coin) => (
-        <>
+        <Link
+          href={`/coins/${coin.id}`}
+          className="coin-link"
+          aria-label={`View ${coin.name}`}
+        >
           #{coin.market_cap_rank}
-          <Link
-            href={`/coins/${coin.id}`}
-            aria-label={`View ${coin.name}`}
-            className="sr-only"
-          >
-            View coin
-          </Link>
-        </>
+        </Link>
       ),
     },
     {
       header: "Token",
       cellClassName: "token-cell",
       cell: (coin) => (
-        <div className="token-info">
-          <Image src={coin.image} alt={coin.name} width={36} height={36} />
+        <Link
+          href={`/coins/${coin.id}`}
+          className="token-info coin-link"
+          aria-label={`View ${coin.name}`}
+        >
+          <Image src={coin.image} alt="" width={36} height={36} />
           <p>
             {coin.name} ({coin.symbol.toUpperCase()})
           </p>
-        </div>
+        </Link>
       ),
     },
     {

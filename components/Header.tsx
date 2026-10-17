@@ -15,10 +15,10 @@ const Header = () => {
         <Link href="/" aria-label="CoinPulse home">
           <Image
             src="/assets/logo.svg"
-            alt="CoinPulse Logo"
-            width={132}
+            alt="Logo"
+            width={160}
             height={40}
-            priority
+            style={{ width: "auto", height: "40px" }}
           />
         </Link>
 
