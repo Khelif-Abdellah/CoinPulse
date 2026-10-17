@@ -147,3 +147,98 @@ export const CategoriesFallback = () => {
     </section>
   );
 };
+
+export const CoinDetailsFallback = () => {
+  return (
+    <main id="coin-details-page">
+      <section className="primary">
+        {/* Coin header */}
+        <div id="coin-header">
+          <div className="header-line-lg skeleton" />
+
+          <div className="info">
+            <div className="header-image skeleton" />
+
+            <div className="price-row">
+              <div className="header-line-lg skeleton" />
+              <div className="change-line skeleton" />
+            </div>
+          </div>
+
+          {/* Price statistics */}
+          <ul className="stats">
+            {Array.from({ length: 3 }).map((_, index) => (
+              <li key={index}>
+                <div className="header-line-sm skeleton" />
+                <div className="header-line-lg skeleton" />
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Chart */}
+        <div className="trend">
+          <h4>Trend Overview</h4>
+          <div className="chart">
+            <div className="chart-skeleton skeleton" />
+          </div>
+        </div>
+
+        {/* Recent trades */}
+        <div className="trades">
+          <h4>Recent Trades</h4>
+
+          <div className="trending-coins-table">
+            <table className="w-full">
+              <thead>
+                <tr>
+                  {["Price", "Amount", "Value", "Buy/Sell", "Time"].map(
+                    (heading) => (
+                      <th
+                        key={heading}
+                        className="px-2 py-3 text-left text-sm text-purple-100"
+                      >
+                        {heading}
+                      </th>
+                    )
+                  )}
+                </tr>
+              </thead>
+
+              <tbody>
+                {Array.from({ length: 5 }).map((_, rowIndex) => (
+                  <tr key={rowIndex}>
+                    {Array.from({ length: 5 }).map((_, colIndex) => (
+                      <td key={colIndex} className="px-2 py-3">
+                        <div className="change-line skeleton" />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section className="secondary">
+        {/* Converter */}
+        <div className="chart-skeleton skeleton" />
+
+        {/* Coin details */}
+        <div className="details">
+          <h4>Coin Details</h4>
+
+          <ul className="details-grid">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <li key={index}>
+                <div className="header-line-sm skeleton" />
+                <div className="header-line-lg skeleton" />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    </main>
+  );
+};

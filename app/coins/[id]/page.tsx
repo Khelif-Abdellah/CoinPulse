@@ -5,6 +5,7 @@ import { fetcher, getPools } from "@/lib/coingecko.actions";
 import { formatCurrency } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { CoinDetailsFallback } from "@/components/home/Fallback";
 
 const PageContent = async ({ params }: NextPageProps) => {
   const { id } = await params;
@@ -71,13 +72,6 @@ const PageContent = async ({ params }: NextPageProps) => {
         >
           <h4>Exchange Listings</h4>
         </LiveDataWrapper>
-
-        <h1 className="text-3xl font-bold">
-          Coin <strong>{id}</strong>
-        </h1>
-        <p>Trend Overview</p>
-        <p>Recent Trades</p>
-        <p>Exchange Listings</p>
       </section>
 
       <section className="secondary">
@@ -114,9 +108,7 @@ const PageContent = async ({ params }: NextPageProps) => {
 };
 
 const Page = (props: NextPageProps) => (
-  <Suspense
-    fallback={<main id="coin-details-page">Loading coin details...</main>}
-  >
+  <Suspense fallback={<CoinDetailsFallback />}>
     <PageContent {...props} />
   </Suspense>
 );
