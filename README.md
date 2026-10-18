@@ -183,7 +183,7 @@ Examples include:
 
 ## Screenshots
 
-Add screenshots of the running application here.
+...
 
 ```text
 docs/
